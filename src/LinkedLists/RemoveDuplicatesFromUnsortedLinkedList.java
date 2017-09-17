@@ -3,23 +3,23 @@ package LinkedLists;
 public class RemoveDuplicatesFromUnsortedLinkedList {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        linkedList.addElement(1);
-        linkedList.addElement(3);
-        linkedList.addElement(2);
-        linkedList.addElement(2);
-        linkedList.addElement(1);
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.addElement(1);
+        doublyLinkedList.addElement(3);
+        doublyLinkedList.addElement(2);
+        doublyLinkedList.addElement(2);
+        doublyLinkedList.addElement(1);
         System.out.println("Given linked list is: ");
-        linkedList.printList();
+        doublyLinkedList.printList();
         System.out.println("Linked list after removing duplicates is: ");
-        removeDuplicates(linkedList.head);
-        linkedList.printList();
+        removeDuplicates(doublyLinkedList.head);
+        doublyLinkedList.printList();
     }
 
-    public static void removeDuplicates(LinkedList.Node head) {
-        LinkedList.Node start = head;
+    public static void removeDuplicates(DoublyLinkedList.Node head) {
+        DoublyLinkedList.Node start = head;
         while (start != null) {
-            LinkedList.Node temp = start.next;
+            DoublyLinkedList.Node temp = start.next;
             while (temp != null) {
                 if (start.data == temp.data) {
                     if (temp.previous != null) {

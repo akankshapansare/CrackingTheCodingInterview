@@ -1,6 +1,7 @@
 package LinkedLists;
 
-public class LinkedList {
+public class SinglyLinkedList {
+
 
     public Node head = null;
 
@@ -14,10 +15,60 @@ public class LinkedList {
                 temp = temp.next;
             }
             temp.next = newNode;
-            newNode.previous = temp;
             newNode.next = null;
         }
     }
+
+    public void insertElement(int position, int data) {
+        Node temp = head;
+        Node tempPrevious = null;
+        Node newNode = new Node(data);
+        int count = 0;
+        while (temp != null) {
+            if (count == position) {
+                if (position == 0) {
+                    head = newNode;
+                }
+
+                if (tempPrevious != null) {
+                    tempPrevious.next = newNode;
+                }
+                newNode.next = temp;
+                break;
+            }
+            tempPrevious = temp;
+            temp = temp.next;
+            count++;
+        }
+    }
+
+    public void deleteElement(int position) {
+        int count = 0;
+        Node temp = head;
+        Node tempPrevious = null;
+        while (temp != null) {
+            if (count == position) {
+                if (position == 0) {
+                    head = head.next;
+                } else {
+                    tempPrevious.next = temp.next;
+                }
+                break;
+            }
+            tempPrevious = temp;
+            temp = temp.next;
+            count++;
+        }
+    }
+
+    public void makeCircularList() {
+        SinglyLinkedList.Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = head;
+    }
+
 
     public int size() {
         int totalCount = 0;
@@ -29,56 +80,9 @@ public class LinkedList {
                 temp = temp.next;
                 totalCount++;
             }
-            return totalCount;
+            return totalCount + 1;
         }
     }
-
-    public void insertElement(int position, int data) {
-        Node newNode = new Node(data);
-        Node temp = head;
-        int count = 0;
-        while (temp != null) {
-            if (count == position) {
-                if (position == 0) {
-                    head = newNode;
-                }
-
-                if (temp.previous != null) {
-                    temp.previous.next = newNode;
-                    newNode.previous = temp.previous;
-                }
-
-                newNode.next = temp;
-                temp.previous = newNode;
-
-                break;
-            }
-            temp = temp.next;
-            count++;
-        }
-    }
-
-    public void deleteElement(int position) {
-        int count = 0;
-        Node temp = head;
-        while (temp != null) {
-            if (count == position) {
-                if (position == 0) {
-                    head = head.next;
-                }
-                if (temp.previous != null) {
-                    temp.previous.next = temp.next;
-                }
-                if (temp.next != null) {
-                    temp.next.previous = temp.previous;
-                }
-                break;
-            }
-            temp = temp.next;
-            count++;
-        }
-    }
-
 
     public void printList() {
         if (head == null) {
@@ -95,10 +99,10 @@ public class LinkedList {
         }
     }
 
+
     public static class Node {
-        Node next;
-        Node previous;
         int data;
+        Node next;
 
         public Node(int data) {
             this.data = data;
