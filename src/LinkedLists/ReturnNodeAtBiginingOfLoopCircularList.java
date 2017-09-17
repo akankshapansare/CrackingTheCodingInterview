@@ -1,6 +1,6 @@
 package LinkedLists;
 
-public class ReturnNodeAtBeginingOfLoopCircularList {
+public class ReturnNodeAtBiginingOfLoopCircularList {
 
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
